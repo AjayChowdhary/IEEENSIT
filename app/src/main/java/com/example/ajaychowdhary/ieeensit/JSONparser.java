@@ -88,8 +88,10 @@ public class JSONparser {
         else
         {
             JsonString = cachedata;
+            Log.e("cache",cachedata);
             try {
                 jsonObject= new JSONObject(JsonString);
+
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -11,11 +11,13 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,21 +41,43 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     JSONArray jsonArray;
-    SimpleAdapter listadapter;
-    List<Post> facebookpost;
-    TextView txtJson;
-    EditText et;
+
+    String s,cmp;
     ListView listView;
     JSONparser j;
     public static String token="https://graph.facebook.com/v2.8/278952135548721?fields=description%2Ccover%2Cid%2Cposts%7Blink%2Cmessage%2Cfull_picture%7D&access_token=779358395553187%7C_5Qv8HWiZjpVAhrVU15UZFyVdjg";
     SharedPreferences prefs;
-
+    ProgressBar progressBar;
+    SwipeRefreshLayout refreshLayout;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView=(ListView) findViewById(R.id.list);
+        progressBar=(ProgressBar)findViewById(R.id.progressBar);
+        refreshLayout=(SwipeRefreshLayout)findViewById(R.id.swipe_container);
         prefs = getSharedPreferences("com.mycompany.IEEENSIT", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("Jsonfile", 0);
+
+        s = sharedPreferences.getString("JsonString","");
+        Log.d("getsvalue",s+"111111");
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+
+              if(!isNetworkConnected()) {
+                  Toast.makeText(getApplicationContext(), "check internet connectivity!!!!", Toast.LENGTH_LONG).show();
+                    refreshLayout.setRefreshing(false);
+              }
+                new feed().execute();
+
+
+            }
+        });
+
         if (prefs.getBoolean("firstrun", true)) {
 
             if(isNetworkConnected())
@@ -84,18 +108,16 @@ public class MainActivity extends Activity {
 
 
     private class feed extends AsyncTask<Void,Void,List<Post>> {
-        SharedPreferences sharedPreferences = getSharedPreferences("Jsonfile", 0);
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
         }
 
         @Override
         protected void onPostExecute(final List<Post> apost) {
             super.onPostExecute(apost);
-
+            progressBar.setVisibility(View.INVISIBLE);
             Customlist customlist = new Customlist(MainActivity.this, apost);
             listView.setAdapter(customlist);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -115,34 +137,51 @@ public class MainActivity extends Activity {
                     startActivity(intent);
                 }
             });
+
+            if(refreshLayout.isRefreshing())
+            {if(s==cmp)
+                Toast.makeText(getApplicationContext(),"THE FEEDS ARE UPTO DATE",Toast.LENGTH_LONG).show();
+              else
+                Toast.makeText(getApplicationContext(),"FEEDS UPDATED",Toast.LENGTH_LONG).show();
+                refreshLayout.setRefreshing(false);
+
+            }
         }
 
         @Override
         protected List<Post> doInBackground(Void... params) {
 
 
-            String s = sharedPreferences.getString("JsonString", "");
             JSONparser jsoncmp=new JSONparser(token);
-            String cmp=jsoncmp.getmainJsonString();
+            if(!isNetworkConnected())
+                cmp="";
+            else
+                cmp=jsoncmp.getmainJsonString();
             Log.d("cmp",cmp);
             Log.d("svalue",s);
-            if (s == cmp) {
+            if (s!=cmp&&s=="") {
                 j = new JSONparser(token, false, "");
                 s = j.getmainJsonString();
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                Log.d("shared prefrence",s+"aaa");
                 editor.putString("JsonString", s);
                 editor.commit();
+
+               // Log.d("pppppshared prefrence",+"aaa");
+
                 JSONObject json = j.getmainJsonObject();
                 try {
-                    jsonArray = json.getJSONObject("post").getJSONArray("data");
+                    jsonArray = json.getJSONObject("posts").getJSONArray("data");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
             } else {
-                j = new JSONparser(token, true, s);
 
+                 j = new JSONparser(token, true, s);
+
+                Log.d("svalue",j.getmainJsonString()+"1111");
                 try {
                     jsonArray = j.getmainJsonObject().getJSONObject("posts").getJSONArray("data");
                 } catch (JSONException e) {
@@ -156,7 +195,7 @@ public class MainActivity extends Activity {
 
 
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 final Post p = new Post();
 
                 JSONObject temp = null;
@@ -183,10 +222,8 @@ public class MainActivity extends Activity {
                 String image_link= null;
                 try {
                     image_link = temp.getString("full_picture");
-                    //URL url = new URL(image_link);
                     p.image= getBitmap(image_link);
-                    //  p.image = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                } catch (JSONException e) {
+                  } catch (JSONException e) {
                     e.printStackTrace();
 
                     p.image=BitmapFactory.decodeResource(getResources(),R.drawable.ieee_image);
