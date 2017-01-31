@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_contribute"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+   >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/shadow_arkalt2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:showDividers="none">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:padding="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:background="#ffffff"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:weightSum="1"
+                        android:gravity="center_horizontal">
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/github_logo"
+                            />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/github"
+                            android:id="@+id/git"
+                            android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Go to IEEE-NSIT APP Repository"
+                            android:id="@+id/GoToRepo"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:padding="10dp"
+                            android:layout_weight="0.57"
+                            android:background="#ffededed" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textSize="17sp"
+                            android:textColor="#ffffff"
+                            android:layout_gravity="left"
+                            android:padding="10dp"
+                            android:text="@string/contribute_message"
+                            android:layout_marginLeft="10dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:background="#ffffff"
+                            android:padding="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_gravity="center_horizontal">
+                            <TextView
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:id="@+id/cont"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/contribute_text"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="2.24" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

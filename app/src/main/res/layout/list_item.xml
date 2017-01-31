@@ -1,171 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginTop="5dp"
-    android:descendantFocusability="blocksDescendants"
-    >
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:padding="16dp">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_weight="0.09"
         android:background="@drawable/shadow_arkalt2"
-        android:orientation="vertical">
+        >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:layout_gravity="center"
-            android:background="#ffffff"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            >
 
             <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:background="#ffe5e5e5">
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                android:background="@android:color/darker_gray">
 
-                <ProgressBar
-                    android:id="@+id/progressBar1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="bottom"
-                    >
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <ImageView
-                        android:layout_width="170dp"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop" />
 
-                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:id="@+id/image"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-
-                        />
-
-                    <LinearLayout
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="right"
-                        android:background="@color/colorAccent"
-                        android:orientation="vertical"></LinearLayout>
-
-                </FrameLayout>
-
-                <Button
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:alpha="0.5"
-                    android:background="@drawable/ic_photo_library_black_24dp" />
+                        android:layout_weight="0.32" />
+                </LinearLayout>
 
             </FrameLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:orientation="vertical"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp">
 
-
-                <TextView
-                    android:id="@+id/data"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_margin="5dp"
-                    android:ellipsize="end"
-                    android:lineSpacingExtra="2dp"
-                    android:maxLines="3"
-                    android:textSize="15sp" />
+                >
 
                 <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/colorPrimary"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
+                    android:weightSum="1">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp">
 
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+
+                        android:background="@color/borderblue"
+                        android:orientation="vertical"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/data"
+                            android:text="HELLO"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_margin="10dp"
+                            android:ellipsize="end"
+                            android:lineSpacingExtra="1dp"
+                            android:maxLines="2"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:weightSum="1"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:text=""
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:gravity="center_vertical"
+                            android:id="@+id/textView4"
+                            android:layout_weight="0.90" />
+
+                        <ImageView
+                            android:layout_width="49dp"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@drawable/heart1"
+                            android:id="@+id/imageView3"
+                            android:layout_gravity="right"/>
+
+                        <TextView
+                            android:text=""
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:id="@+id/textView3" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:background="@drawable/shadow_small">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorPrimary"
-
-                            android:orientation="horizontal"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:duplicateParentState="true"
-
-                                android:padding="5dp"
-                                android:text="READ MORE"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="#ffffffff"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </FrameLayout>
-
-
-            </LinearLayout>
-
+            </FrameLayout>
 
         </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+    </FrameLayout>
+</LinearLayout>

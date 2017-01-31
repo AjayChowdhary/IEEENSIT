@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="303dp"
+        android:layout_height="352dp"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:layout_weight="0.55">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ieee_image"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="99dp"
+                    android:gravity="center"
+                    android:text="SORRY YOU ARE NOT A MEMBER OF IEEE NSIT. KINDLY CONTACT ieeensit2016@gmail.com"
+                    android:id="@+id/textView6"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <Button
+                    android:text="APPLY"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/applybutton" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/name_apply"
+                    android:hint="NAME" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:ems="10"
+                    android:id="@+id/Phonenumber" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

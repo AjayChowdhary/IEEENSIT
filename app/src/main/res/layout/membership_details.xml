@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:weightSum="1">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:background="@drawable/shadow_arkalt2"
+
+
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:background="@color/black"
+
+
+            >
+
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ieee_image"
+                android:id="@+id/imageView2" />
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:text="NAME"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/NAME"
+                android:textSize="15sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:id="@+id/name_form"
+                android:background="@android:drawable/editbox_background_normal" />
+
+            <TextView
+                android:text="BRANCH"
+
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/branch_text"
+                android:background="@android:drawable/editbox_background_normal" />
+
+            <TextView
+                android:textSize="15sp"
+                android:text="EMAIL"
+
+                android:textColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email"
+                android:background="@android:drawable/editbox_background_normal" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

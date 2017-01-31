@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 
 public class Post {
     public String message="";
-    public String picture="";
+    public String imageurl="";
     public String postid="";
     public Bitmap image;
     public String link="";

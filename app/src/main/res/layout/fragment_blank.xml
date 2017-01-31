@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:weightSum="1">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="361dp"
+        android:gravity="center"
+        android:background="@drawable/shadow_arkalt2"
+        android:layout_weight="0.60">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="GENERATE YOUR IEEE IDCARD"/>
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:inputType="phone"
+            android:ems="10"
+            android:background="@android:drawable/editbox_background_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/phonenumber"
+            android:hint="ENTER PHONE NUMBER"/>
+
+
+        <Button
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+
+            android:text="GENERATE"
+            android:id="@+id/generate" />
+    </LinearLayout>
+</LinearLayout>

@@ -32,13 +32,13 @@ public class JSONparser {
         establishconnection();
         fromcache=false;
     }
-    JSONparser(String token, boolean fromcache,String cachedata) {
+   /* JSONparser(String token, boolean fromcache,String cachedata) {
         this.token = token;
         this.cachedata=cachedata;
         this.fromcache = fromcache;
         establishconnection();
 
-    }
+    }*/
 
     void establishconnection() {
 

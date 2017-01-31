@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_feeds"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="FEEDS" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Gallery" />
+        <item
+            android:id="@+id/nav_SIGs"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="S.I.Gs" />
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/aboutus"
+                android:icon="@drawable/ic_menu_send"
+                android:title="About Us" />
+            <item
+                android:id="@+id/Contribute"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Contribute in App" />
+            <item
+                android:id="@+id/membership_card"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="GET IEEENSIT MEMBERSHIP CARD" />
+
+        </menu>
+    </item>
+
+</menu>

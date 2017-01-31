@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_about__us"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.ajaychowdhary.ieeensit.About_US">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="462dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="115dp">
+
+                <ImageView
+                    android:layout_width="374dp"
+                    android:layout_height="120dp"
+                    app:srcCompat="@drawable/header1"
+                    android:id="@+id/imageView4" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="The IEEE (Institute of Electrical and Electronics Engineers, Inc.), a non-profit organization, is the world's leading professional association for the advancement of technology. Through its global membership, the IEEE is a leading authority on areas ranging from aerospace systems, computers and telecommunications to biomedical engineering, electric power and consumer electronics among others"
+                            android:textSize="15sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:layout_weight="0.74" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="138dp"
+                            app:srcCompat="@drawable/group_pic"
+                            android:background="@drawable/group_pic"
+                            android:id="@+id/imageView5" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
