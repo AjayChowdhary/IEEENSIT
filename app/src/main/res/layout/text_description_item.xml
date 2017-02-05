@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:padding="16dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="@drawable/shadow_arkalt2"
+        android:layout_weight="0.02"
+        android:padding="5dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="277dp">
+
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="272dp"
+                android:weightSum="1">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="249dp"
+
+                    >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="1"
+                        android:padding="5dp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.72">
+
+                            <TextView
+                                android:id="@+id/data"
+                                android:text="HELLO"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_margin="10dp"
+                                android:ellipsize="end"
+                                android:lineSpacingExtra="1dp"
+                                android:maxLines="7"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+
+                            android:background="@color/borderblue"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="303dp"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+
+
+                            android:background="@color/customgrey"
+                            android:layout_weight="0.20">
+
+                            <TextView
+                                android:text=""
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:gravity="center_vertical"
+                                android:id="@+id/post3_date"
+                                android:layout_weight="0.90" />
+
+                            <ImageView
+                                android:layout_width="49dp"
+                                android:layout_height="match_parent"
+                                app:srcCompat="@drawable/heart1"
+                                android:id="@+id/imageView3"
+                                android:layout_gravity="right"/>
+
+                            <TextView
+                                android:text=""
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:id="@+id/likes3_feeds" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </FrameLayout>
+</LinearLayout>
