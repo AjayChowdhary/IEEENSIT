@@ -18,30 +18,49 @@
         android:layout_weight="0.60">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="GENERATE YOUR IEEE IDCARD"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/ieee_logo"
+            >
 
-        <EditText
-            android:layout_marginTop="20dp"
-            android:inputType="phone"
-            android:ems="10"
-            android:background="@android:drawable/editbox_background_normal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/phonenumber"
-            android:hint="ENTER PHONE NUMBER"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="match_parent"
+                tools:fadingEdge="horizontal|vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/customgrey"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:text="GENERATE YOUR IEEE IDCARD" />
+
+                <EditText
+                    android:layout_marginTop="20dp"
+                    android:inputType="phone"
+                    android:ems="10"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phonenumber"
+                    android:hint="ENTER PHONE NUMBER"/>
+
+                <Button
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+
+                    android:text="GENERATE"
+                    android:id="@+id/generate" />
+            </LinearLayout>
+
+        </FrameLayout>
 
 
-        <Button
-            android:layout_marginTop="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-
-            android:text="GENERATE"
-            android:id="@+id/generate" />
     </LinearLayout>
 </LinearLayout>

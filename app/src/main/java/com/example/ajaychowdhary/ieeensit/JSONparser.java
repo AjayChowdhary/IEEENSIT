@@ -23,8 +23,8 @@ public class JSONparser {
     JSONArray jsonArray;
     String token;
     Boolean fromcache=false;
-    String JsonString;
-    String cachedata;
+    String JsonString="";
+    String cachedata="";
 
     JSONparser(String token)
     {
@@ -32,13 +32,6 @@ public class JSONparser {
         establishconnection();
         fromcache=false;
     }
-   /* JSONparser(String token, boolean fromcache,String cachedata) {
-        this.token = token;
-        this.cachedata=cachedata;
-        this.fromcache = fromcache;
-        establishconnection();
-
-    }*/
 
     void establishconnection() {
 

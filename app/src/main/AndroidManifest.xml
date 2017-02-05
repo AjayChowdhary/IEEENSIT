@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ieee_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -27,7 +27,8 @@
         <activity android:name=".membership_details" />
         <activity android:name=".id_first_page" />
         <activity android:name=".errorid" />
-
+        <activity android:name=".sigs" />
+        <activity android:name=".Gallery"></activity>
     </application>
 
 </manifest>

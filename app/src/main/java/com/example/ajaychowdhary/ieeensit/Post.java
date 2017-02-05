@@ -12,6 +12,8 @@ public class Post {
     public String postid="";
     public Bitmap image;
     public String link="";
+    public String date="";
+    public int likes=0;
 
 
 }

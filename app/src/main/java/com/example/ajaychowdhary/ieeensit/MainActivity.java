@@ -1,19 +1,17 @@
 package com.example.ajaychowdhary.ieeensit;
 
-import android.annotation.TargetApi;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -28,9 +26,7 @@ import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -48,23 +44,25 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    //boolean dataincache = false;
+
     JSONArray jsonArray;
     ListView listView;
     JSONparser j;
-    public static String token="https://graph.facebook.com/v2.8/278952135548721?fields=description%2Ccover%2Cid%2Cposts%7Blink%2Cmessage%2Cfull_picture%7D&access_token=779358395553187%7C_5Qv8HWiZjpVAhrVU15UZFyVdjg";
+    public static String token="https://graph.facebook.com/v2.8/278952135548721?fields=description%2Ccover%2Cid%2Cposts%7Blink%2Cmessage%2Cfull_picture%2Ccreated_time%2Clikes%7D&access_token=779358395553187%7C_5Qv8HWiZjpVAhrVU15UZFyVdjg";
     ProgressBar progressBar;
     SwipeRefreshLayout refreshLayout;
     SharedPreferences sharedPreferences;
     String Jsonstring,Jsonstring_cmp;
-    List<Post> list_post;
+    List<Post> list_post=new ArrayList<>();;
     FloatingActionButton fab;
     FloatingActionButton fab1;
     FloatingActionButton fab2;
     FloatingActionButton fab3;
     private boolean FAB_Status = false;
-
+    cache_data cache;
     //Animations
     Animation show_fab_1;
     Animation hide_fab_1;
@@ -81,11 +79,11 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         refreshLayout=(SwipeRefreshLayout) findViewById(R.id.swipe_container);
         //slide drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -96,37 +94,29 @@ public class MainActivity extends AppCompatActivity
         //floating button
         fabbutton_function();
 
+        sharedPreferences=getSharedPreferences("Jsonfile",0);
         listView = (ListView) findViewById(R.id.list);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        sharedPreferences=getSharedPreferences("com.ieeensit.mainjson",0);
-        Jsonstring_cmp=sharedPreferences.getString("JsonString","");
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                {Log.d("in function","workking");
+                    if(isNetworkConnected()) {
+                        Toast.makeText(getApplicationContext(), "FEEDS UPDATED", Toast.LENGTH_SHORT).show();
+                        refreshLayout.setRefreshing(false);
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Can't Connect!!!!", Toast.LENGTH_SHORT).show();
+                        refreshLayout.setRefreshing(false);
+                    }
+                }
+            }
+        });
 
 
         new feed().execute();
 
-        if (refreshLayout.isRefreshing()) {
-            if (Jsonstring_cmp == Jsonstring)
-                Toast.makeText(getApplicationContext(), "THE FEEDS ARE UPTO DATE", Toast.LENGTH_LONG).show();
-            else
-            {
-                is_cache_data_old=true;
-               new feed().execute();
-                //Toast.makeText(getApplicationContext(), "FEEDS UPDATED", Toast.LENGTH_LONG).show();
-            }
-            refreshLayout.setRefreshing(false);
-
-        }
-        if(noviewload)
-        {Toast.makeText(getApplicationContext(), "check internet connectivity!!!!", Toast.LENGTH_LONG).show();
-            FrameLayout layout=(FrameLayout) findViewById(R.id.content_frame);
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                layout.setBackgroundDrawable( getResources().getDrawable(R.drawable.ieeewatermark) );
-            } else {
-                layout.setBackground( getResources().getDrawable(R.drawable.ieeewatermark));
-            }
-        }
 
     }
 
@@ -168,10 +158,13 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplication(),"ANY PROJECT IDEA!! NEED OUR HELP? ", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplication(), "Volunteer For IEEE", Toast.LENGTH_SHORT).show();
+                if(isNetworkConnected()){
                 Intent i = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("#project idea"));
-                startActivity(i);
+                        Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSdVDvD5ZbFkHBdxfPtLuntFW_gjgry07wxmyrzOt-6HcvyuqQ/viewform?c=0&w=1"));
+                startActivity(i);}
+                else
+                    Toast.makeText(getApplicationContext(),"Can't Connect!!!!",Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -180,9 +173,13 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplication(), "Volunteer For IEEE", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("#voluntaring link"));
-                startActivity(i);
+                if(isNetworkConnected()) {
+                    Intent i = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLScU0P0GOLs2KXj6yg9K8TIUHPrKd377FwLL2dUZKscI6ZNLaQ/viewform?c=0&w=1"));
+                    startActivity(i);
+                }
+                else
+                Toast.makeText(getApplicationContext(),"Can't Connect!!!!",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -190,10 +187,14 @@ public class MainActivity extends AppCompatActivity
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getApplication(), "Feed Back", Toast.LENGTH_SHORT).show();
+                if(isNetworkConnected()){
                 Intent i = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("#FEEDBACK LINK"));
-                startActivity(i);
+                        Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLScoX_cSslLFzZ-gjg1eqa32PXeaU3cRxQK3l2gHFQSrQ-BjHg/viewform?c=0&w=1"));
+                startActivity(i);}
+                else
+                    Toast.makeText(getApplicationContext(),"Can't Connect!!!!",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -274,16 +275,22 @@ public class MainActivity extends AppCompatActivity
         Intent i;
         switch (id) {
             case R.id.nav_feeds:
-                 i=new Intent(this,id_first_page.class);
-                startActivity(i);
+
                 break;
             case R.id.nav_gallery:
-                 i=new Intent(this,id_first_page.class);
-                startActivity(i);
+                if(isNetworkConnected())
+                { i=new Intent(this,Gallery.class);
+                startActivity(i);}
+                else
+                Toast.makeText(getApplicationContext(),"Can't Connect!!!!",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_SIGs:
-                 i=new Intent(this,id_first_page.class);
-                startActivity(i);
+                if(isNetworkConnected())
+                { i=new Intent(this,sigs.class);
+                    startActivity(i);}
+                else
+                    Toast.makeText(getApplicationContext(),"Can't Connect!!!!",Toast.LENGTH_SHORT).show();
+
                 break;
             case R.id.Contribute:
                 final Dialog dialog = new Dialog(MainActivity.this);
@@ -295,8 +302,9 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onClick(View view) {
                         Uri uri = Uri.parse("https://github.com/AjayChowdhary/IEEENSIT");
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
+                        if(isNetworkConnected())
+                        {Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);}
                     }
                 });
                 TextView con= (TextView) dialog.findViewById(R.id.cont);
@@ -304,19 +312,31 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onClick(View view) {
                         Uri uri = Uri.parse("https://github.com/AjayChowdhary/IEEENSIT/wiki");
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
+                        if(isNetworkConnected())
+                        {Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                            startActivity(intent);}
                     }
                 });
                 dialog.show();
 
                 break;
 
+
+
+
+
+
             case R.id.aboutus:
                 i=new Intent(this,About_US.class);
                 startActivity(i);
                 break;
-
+            case R.id.membership_card:
+                if(isNetworkConnected())
+                { i=new Intent(this,id_first_page.class);
+                    startActivity(i);}
+                else
+                    Toast.makeText(getApplicationContext(),"Can't Connect!!!!",Toast.LENGTH_SHORT).show();
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -328,12 +348,12 @@ public class MainActivity extends AppCompatActivity
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return cm.getActiveNetworkInfo() != null;
+
     }
 
 
-    private class feed extends AsyncTask<Void,Void,List<Post>> {
-        boolean dataincache = false;
-        cache_data cache;
+    private class feed extends AsyncTask<Void,Void,List<Post> > {
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -342,138 +362,116 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(final List<Post> apost) {
             super.onPostExecute(apost);
+
+
+
             progressBar.setVisibility(View.GONE);
-            Customlist customlist = new Customlist(MainActivity.this, apost);
-            listView.setAdapter(customlist);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(MainActivity.this, list_item_description.class);
-                    intent.putExtra("message", apost.get(position).message);
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    Bitmap bitmap = apost.get(position).image;
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte[] bytes = stream.toByteArray();
-                    intent.putExtra("image", bytes);
-                    intent.putExtra("link", apost.get(position).link);
-                    startActivity(intent);
-                }
-            });
+            if(noviewload)
+            {Toast.makeText(getApplicationContext(), "check internet connectivity!!!!", Toast.LENGTH_LONG).show();
+                setContentView(R.layout.temp);
+                /*FrameLayout layout=(FrameLayout) findViewById(R.id.content_frame);
+                final int sdk = android.os.Build.VERSION.SDK_INT;
+                if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                    layout.setBackgroundDrawable( getResources().getDrawable(R.mipmap.ieee_logo) );
+                } else {
+                    layout.setBackground( getResources().getDrawable(R.mipmap.ieee_logo));
+                }*/
+            }
+            else {
 
 
-        }
+
+                            Customlist customlist = new Customlist(MainActivity.this, apost);
+                            listView.setAdapter(customlist);
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                                    if (id != 1) {
+                                        final Intent intent = new Intent(MainActivity.this, list_item_description.class);
+                                        intent.putExtra("message", apost.get(position).message);
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        Bitmap bitmap = apost.get(position).image;
+                                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                        byte[] bytes = stream.toByteArray();
+                                        intent.putExtra("image", bytes);
+                                        intent.putExtra("link", apost.get(position).link);
+
+                                        startActivity(intent);
+                                    }
+                                }
+
+
+                            });
+
+                        }
+
+                 }
+
+
+
+
+
 
         @Override
         protected List<Post> doInBackground(Void... params) {
+            j=new JSONparser(token);
+            Jsonstring = sharedPreferences.getString("JsonString","");
+            Jsonstring_cmp = j.getmainJsonString();
 
-            List<Post> postlist = new ArrayList<>();
             cache = new cache_data(getApplicationContext(), true);
             list_post = cache.getfeedsfromcache();
-            dataincache = true;
 
-            if(list_post.size()!=0&&!is_cache_data_old)
-            {
-                for(int i=0;i<list_post.size();i++)
-                    try {
-                        if(list_post.get(i).imageurl=="-1")
-                            list_post.get(i).image= BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
-                        else
-                            list_post.get(i).image=getBitmap(list_post.get(i).imageurl);
-                    } catch (IOException e) {
-                        list_post.get(i).image=BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
-                        e.printStackTrace();
-                    }
+            if(isNetworkConnected()) {
+
+               if (Jsonstring_cmp.equals(Jsonstring)) {
+
+                   if ((list_post.size() != 0)) {
+                       for (int i = 0; i < list_post.size(); i++)
+                           try {
+                               if (list_post.get(i).imageurl == "-1")
+                                   list_post.get(i).image = BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
+                                else
+                                  list_post.get(i).image= getBitmap(list_post.get(i).imageurl);
+                           } catch (Exception e) {
+                                    list_post.get(i).image = BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
+                                     e.printStackTrace();
+                           }
+
+                       return list_post;
+                   }
+
+               }
+                //else
+
+             list_post=getdatafromnet(cache);
                 return list_post;
-            }
+           }
+            else
+           {
+               if ((list_post.size() != 0)) {
+                   for (int i = 0; i < list_post.size(); i++)
+                       try {
+                           if (list_post.get(i).imageurl == "-1")
+                               list_post.get(i).image = BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
+                           else
+                               list_post.get(i).image = getBitmap(list_post.get(i).imageurl);
+                       } catch (IOException e) {
+                           list_post.get(i).image = BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
+                           e.printStackTrace();
+                       }
 
-            if (!isNetworkConnected()) {
+                   return list_post;
+               }
+               else
+               {
+                   noviewload=true;
+                   return null;
+               }
 
-                noviewload=true;
-            }else {
-
-                j = new JSONparser(token);
-                Jsonstring = j.getmainJsonString();
-
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("JsonString",Jsonstring);
-
-                editor.commit();
-
-
-                JSONObject json = j.getmainJsonObject();
-                try {
-                    jsonArray = json.getJSONObject("posts").getJSONArray("data");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    final Post p = new Post();
-
-                    JSONObject temp = null;
-                    try {
-                        temp = jsonArray.getJSONObject(i);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        p.message = temp.getString("message");
-                        Log.d("message",p.message);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        p.link = temp.getString("link");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        p.postid = temp.getString("id");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    String image_link = null;
-                    try {
-
-                        image_link = temp.getString("full_picture");
-                        p.imageurl = image_link;
-                        p.image = getBitmap(image_link);
-
-                    } catch (JSONException e) {
-
-                        e.printStackTrace();
-                        p.imageurl = "-1";
-                        p.image = BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
-
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    postlist.add(p);
-                }
-                cache.putincache(postlist);
-
-            }
-            return postlist;
+           }
 
         }
-             /*else {
-
-                 j = new JSONparser(token, true, s);
-
-                Log.d("svalue",j.getmainJsonString()+"1111");
-                try {
-                    jsonArray = j.getmainJsonObject().getJSONObject("posts").getJSONArray("data");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-
-            }*/
 
 
     }
@@ -483,23 +481,107 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    public Bitmap getBitmap(String url) throws IOException {
-        Bitmap mBitmap;
-        Picasso.Builder builder = new Picasso.Builder(getApplicationContext());
-        builder.listener(new Picasso.Listener() {
-            @Override
-            public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                exception.printStackTrace();
-            }
-        });
-        try {
-            mBitmap = builder.build().with(getApplicationContext()).load(url).get();
-        }
-        catch (Exception e)
-        {e.printStackTrace();
-            mBitmap=BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);}
 
-        return mBitmap;}
+
+        List<Post> getdatafromnet(cache_data this_cache) {
+
+            List<Post> listpost_net = new ArrayList<>();
+            SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.putString("JsonString",j.getmainJsonString());
+            editor.commit();
+            JSONObject json = j.getmainJsonObject();
+            try {
+                jsonArray = json.getJSONObject("posts").getJSONArray("data");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                final Post p = new Post();
+
+                JSONObject temp = null;
+                try {
+                    temp = jsonArray.getJSONObject(i);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    p.message = temp.getString("message");
+                    Log.d("message", p.message);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    p.link = temp.getString("link");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    p.postid = temp.getString("id");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    p.likes = temp.getJSONObject("likes").getJSONArray("data").length();
+                    Log.d("likes found", "00" + p.likes);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d("likes not found", "00" + p.likes + " ");
+                }
+                try {
+                    p.date = temp.getString("created_time");
+                    p.date = p.date.substring(0, 10);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //p.postid = temp.getString("id");
+                String image_link = "";
+                try {
+
+                    image_link = temp.getString("full_picture");
+                    p.imageurl = image_link;
+                    p.image = getBitmap(image_link);
+
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+                    p.imageurl = "-1";
+                    p.image = BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                listpost_net.add(p);
+            }
+            this_cache.putincache(listpost_net);
+            return listpost_net;
+        }
+
+
+        public Bitmap getBitmap(String url) throws IOException {
+            Bitmap mBitmap;
+            Picasso.Builder builder = new Picasso.Builder(getApplicationContext());
+            builder.listener(new Picasso.Listener() {
+                @Override
+                public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
+                    exception.printStackTrace();
+                }
+            });
+
+            try {
+                mBitmap = builder.build().with(MainActivity.this).load(url).get();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ieee_image);
+            }
+
+            return mBitmap;
+        }
 
 
 }

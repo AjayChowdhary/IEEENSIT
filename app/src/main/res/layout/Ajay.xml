@@ -1,0 +1,288 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.ajaychowdhary.ieeensit.Electronics"
+    >
+    <!-- TODO: Update blank fragment layout -->
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+            android:layout_margin="50dp"
+
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:layout_gravity="center"
+                >
+
+                <FrameLayout
+                    android:layout_width="227dp"
+                    android:layout_height="248dp"
+                    android:paddingTop="16dp"
+                     android:background="@drawable/shadow_arkalt2"
+                    android:layout_weight="0.21">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="1">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="132dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ajay_chowdhary"
+                                android:id="@+id/imageView6"
+                                android:layout_weight="1.24" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="153dp">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="116dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textSize="20sp"
+                                    android:gravity="center"
+                                    android:text="AJAY CHOWDHARY" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15sp"
+                                    android:gravity="center"
+                                    android:text="ECE 2014-2018"
+                                    android:layout_marginTop="5dp" />
+
+                                <LinearLayout
+                                    android:layout_marginTop="30dp"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/borderblue"></LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center">
+
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent">
+
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:id="@+id/linked_ajaychowdhar"
+                                            android:layout_gravity="bottom"
+                                            android:src="@drawable/linkedin"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1" />
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:id="@+id/home_ajaychowdhar"
+                                            android:layout_gravity="bottom"
+                                            android:src="@drawable/home_ajay"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1" />
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:id="@+id/github_ajaychowdhar"
+                                            android:layout_gravity="bottom"
+                                            android:src="@drawable/github"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1" />
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:id="@+id/facebook_ajaychowdhar"
+                                            android:layout_gravity="bottom"
+                                            android:src="@drawable/facebook"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:layout_gravity="center"
+                >
+
+                <FrameLayout
+                    android:layout_width="227dp"
+                    android:layout_height="248dp"
+                    android:paddingTop="16dp"
+                    android:background="@drawable/shadow_arkalt2"
+                    android:layout_weight="0.21">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="1">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="132dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ajay_chowdhary"
+                                android:id="@+id/imageView7"
+                                android:layout_weight="1.24" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="153dp">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="116dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textSize="20sp"
+                                    android:gravity="center"
+                                    android:text="AJAY CHOWDHARY" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15sp"
+                                    android:gravity="center"
+                                    android:text="ECE 2014-2018"
+                                    android:layout_marginTop="5dp" />
+
+                                <LinearLayout
+                                    android:layout_marginTop="30dp"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/borderblue"></LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center">
+
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent">
+
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:id="@+id/linked_"
+                                            android:layout_gravity="bottom"
+                                            android:src="@drawable/linkedin"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1" />
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:id="@+id/home_"
+                                            android:layout_gravity="bottom"
+                                            android:src="@drawable/home_ajay"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1" />
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:id="@+id/github_"
+                                            android:layout_gravity="bottom"
+                                            android:src="@drawable/github"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1" />
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:id="@+id/facebook_"
+                                            android:layout_gravity="bottom"
+                                            android:src="@drawable/facebook"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_weight="1" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </FrameLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</FrameLayout>

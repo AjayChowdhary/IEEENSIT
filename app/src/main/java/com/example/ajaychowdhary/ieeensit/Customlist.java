@@ -27,7 +27,7 @@ public class Customlist extends ArrayAdapter {
 
 
     public ImageView image;
-    public TextView textViewName;
+    public TextView textViewName,date,likes;
 
 
     public Activity context;
@@ -53,6 +53,12 @@ public class Customlist extends ArrayAdapter {
             listViewItem=inflater.inflate(R.layout.list_item_1, null, true);
             image = (ImageView) listViewItem.findViewById(R.id.imagenext);
             image.setImageBitmap(objects.get(position).image);
+            image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            likes=(TextView) listViewItem.findViewById(R.id.likes2_feeds);
+            likes.setText(objects.get(position).likes+"");
+            date=(TextView)listViewItem.findViewById(R.id.post2_date);
+            date.setText(objects.get(position).date);
+
 
         }
         else if(objects.get(position).imageurl.equals("-1"))
@@ -60,18 +66,29 @@ public class Customlist extends ArrayAdapter {
             listViewItem= inflater.inflate(R.layout.text_description_item, null, true);
             textViewName = (TextView) listViewItem.findViewById(R.id.data);
             textViewName.setText(objects.get(position).message);
+            likes=(TextView) listViewItem.findViewById(R.id.likes3_feeds);
+            likes.setText(objects.get(position).likes+"");
+            date=(TextView)listViewItem.findViewById(R.id.post3_date);
+            date.setText(objects.get(position).date);
+
             //ProgressBar pbar = (ProgressBar) listViewItem.findViewById(R.id.progressBar1);
 
             //pbar.setVisibility(View.INVISIBLE);
 
         }
         else{
+
             listViewItem= inflater.inflate(R.layout.list_item, null, true);
             textViewName = (TextView) listViewItem.findViewById(R.id.data);
             image = (ImageView) listViewItem.findViewById(R.id.image);
+            likes=(TextView) listViewItem.findViewById(R.id.likes1_feeds);
+            likes.setText(objects.get(position).likes+"");
+            date=(TextView)listViewItem.findViewById(R.id.post1_date);
+            date.setText(objects.get(position).date);
             //ProgressBar pbar = (ProgressBar) listViewItem.findViewById(R.id.progressBar1);
 
             image.setImageBitmap(objects.get(position).image);
+            image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             //pbar.setVisibility(View.INVISIBLE);
 
             textViewName.setText(objects.get(position).message);

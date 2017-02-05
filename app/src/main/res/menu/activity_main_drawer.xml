@@ -4,8 +4,8 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_feeds"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="FEEDS" />
+            android:icon="@drawable/ic_menu_send"
+            android:title="HOME" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
@@ -22,16 +22,19 @@
         <menu>
             <item
                 android:id="@+id/aboutus"
-                android:icon="@drawable/ic_menu_send"
+
+                android:icon="@drawable/home_ajay"
+
                 android:title="About Us" />
             <item
                 android:id="@+id/Contribute"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/heart1"
                 android:title="Contribute in App" />
             <item
                 android:id="@+id/membership_card"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@android:drawable/ic_input_get"
                 android:title="GET IEEENSIT MEMBERSHIP CARD" />
+
 
         </menu>
     </item>
