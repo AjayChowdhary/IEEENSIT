@@ -1,4 +1,4 @@
-package com.example.ajaychowdhary.ieeensit;
+package com.example.ajaychowdhary.ieeensit.Activities;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -14,6 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.example.ajaychowdhary.ieeensit.Post;
+import com.example.ajaychowdhary.ieeensit.R;
 
 import java.util.List;
 

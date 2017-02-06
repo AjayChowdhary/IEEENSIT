@@ -1,0 +1,45 @@
+{
+  "project_info": {
+    "project_number": "963143853013",
+    "firebase_url": "https://ieeensit-8188d.firebaseio.com",
+    "project_id": "ieeensit-8188d",
+    "storage_bucket": "ieeensit-8188d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963143853013:android:bfc42793a74813cd",
+        "android_client_info": {
+          "package_name": "com.example.ajaychowdhary.ieeensit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963143853013-hlt1a4eci4isteslmkfav6hedb7d31kb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoHb801pGfjta6NFmGJSN9s096p7DNn3Y"
+        },
+        {
+          "current_key": "AIzaSyCkgO-XM8LaIWGLvEWCKarwpNHXWA4VWqY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

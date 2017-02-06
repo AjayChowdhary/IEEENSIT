@@ -1,4 +1,4 @@
-package com.example.ajaychowdhary.ieeensit;
+package com.example.ajaychowdhary.ieeensit.Activities;
 
 
 import android.app.Dialog;
@@ -11,7 +11,6 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -32,6 +31,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ajaychowdhary.ieeensit.JSONparser;
+import com.example.ajaychowdhary.ieeensit.Post;
+import com.example.ajaychowdhary.ieeensit.R;
+import com.example.ajaychowdhary.ieeensit.list_item_description;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean FAB_Status = false;
     cache_data cache;
     //Animations
+
     Animation show_fab_1;
     Animation hide_fab_1;
     Animation show_fab_2;
@@ -72,9 +76,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Animation hide_fab_3;
     Boolean is_cache_data_old=false;
     Boolean noviewload=false;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedP_userdata = getSharedPreferences("userdata",0);
+
+        if(sharedP_userdata.getString("phonenumber","").equals("")) {
+            intent = new Intent(this, Register_App.class);
+            startActivity(intent);
+            finish();
+        }
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -89,9 +102,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         navigationView.setNavigationItemSelectedListener(this);
 
         //floating button
+
+        fab.setBackgroundColor(getResources().getColor(R.color.customgrey));
+
         fabbutton_function();
 
         sharedPreferences=getSharedPreferences("Jsonfile",0);
@@ -135,8 +152,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         hide_fab_2 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab2_hide);
         show_fab_3 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab3_show);
         hide_fab_3 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab3_hide);
-
-
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,6 +300,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(getApplicationContext(),"Can't Connect!!!!",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_SIGs:
+
                 if(isNetworkConnected())
                 { i=new Intent(this,sigs.class);
                     startActivity(i);}

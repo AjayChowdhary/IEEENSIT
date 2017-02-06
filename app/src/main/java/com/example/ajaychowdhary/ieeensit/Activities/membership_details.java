@@ -1,4 +1,4 @@
-package com.example.ajaychowdhary.ieeensit;
+package com.example.ajaychowdhary.ieeensit.Activities;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.ajaychowdhary.ieeensit.Member;
+import com.example.ajaychowdhary.ieeensit.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.example.ajaychowdhary.ieeensit;
+package com.example.ajaychowdhary.ieeensit.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

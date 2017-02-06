@@ -1,10 +1,13 @@
-package com.example.ajaychowdhary.ieeensit;
+package com.example.ajaychowdhary.ieeensit.Activities;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.example.ajaychowdhary.ieeensit.Post;
+import com.example.ajaychowdhary.ieeensit.Database.database;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -26,7 +26,7 @@ public class JSONparser {
     String JsonString="";
     String cachedata="";
 
-    JSONparser(String token)
+   public JSONparser(String token)
     {
         this.token = token;
         establishconnection();

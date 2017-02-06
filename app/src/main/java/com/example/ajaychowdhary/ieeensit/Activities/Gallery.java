@@ -1,4 +1,4 @@
-package com.example.ajaychowdhary.ieeensit;
+package com.example.ajaychowdhary.ieeensit.Activities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +11,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.example.ajaychowdhary.ieeensit.Animation.Button_animation;
+import com.example.ajaychowdhary.ieeensit.JSONparser;
+import com.example.ajaychowdhary.ieeensit.R;
+import com.example.ajaychowdhary.ieeensit.Adapters.gallery_adapter;
+import com.example.ajaychowdhary.ieeensit.gallery_image;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;

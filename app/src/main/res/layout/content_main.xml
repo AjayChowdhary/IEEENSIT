@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:animateLayoutChanges="true"
 
-    tools:context=".MainActivity"
+    tools:context=".Activities.MainActivity"
     android:layout_marginTop="50dp">
 
     <ProgressBar

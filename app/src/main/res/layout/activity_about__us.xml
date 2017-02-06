@@ -10,7 +10,7 @@
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ajaychowdhary.ieeensit.About_US">
+    tools:context="com.example.ajaychowdhary.ieeensit.Activities.About_US">
 
     <FrameLayout
         android:layout_width="match_parent"

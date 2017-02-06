@@ -7,8 +7,8 @@ import android.graphics.Bitmap;
  */
 
 public class gallery_image {
-    String imageurl="";
-    String about="";
-    Bitmap image=null;
-    String likes="";
+    public String imageurl="";
+    public String about="";
+    public Bitmap image=null;
+    public String likes="";
 }

@@ -1,4 +1,4 @@
-package com.example.ajaychowdhary.ieeensit;
+package com.example.ajaychowdhary.ieeensit.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.ajaychowdhary.ieeensit.JSONparser;
+import com.example.ajaychowdhary.ieeensit.Member;
+import com.example.ajaychowdhary.ieeensit.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
