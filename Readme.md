@@ -1,9 +1,15 @@
+
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/19619541/22681193/ee45b5fa-ed31-11e6-9c62-d41a4f67b201.jpg" width="100" hieght="100"/>
+</p>
+
 # IEEENSIT
-
-
 IEEE-NSIT Student Branch works to create an atmosphere of technical excellence for the students. It aims at helping students in building an aptitude towards applying engineering in daily life by learning ways to use the latest technology on offer. Through this app, students can remain informed about events and news pertaining to IEEE-NSIT.
+	
 
-
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/19619541/22680399/b67f20c4-ed2d-11e6-8742-427994c7639d.jpg" width="150" hieght="200"/>
+</p>
 
 
 
