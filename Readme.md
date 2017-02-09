@@ -9,6 +9,7 @@ IEEE-NSIT Student Branch works to create an atmosphere of technical excellence f
 
 <p align="center">
 <img src="https://cloud.githubusercontent.com/assets/19619541/22680399/b67f20c4-ed2d-11e6-8742-427994c7639d.jpg" width="150" hieght="200"/>
+<img src="https://cloud.githubusercontent.com/assets/19619541/22775694/cd9d95be-eed2-11e6-820e-40c90fdda873.png" width="150" hieght="200"/>
 </p>
 
 
@@ -20,6 +21,7 @@ This is the home page of the app shows all the latest feeds and news which are p
 The MainActivity also uses sliding drawer to provide different menu options.
 <p align="center">
 <img src="https://cloud.githubusercontent.com/assets/19619541/22679498/aa1db278-ed28-11e6-949e-3a1b96640c8a.jpg" width="150" hieght="200"/>
+<img src="https://cloud.githubusercontent.com/assets/19619541/22775694/cd9d95be-eed2-11e6-820e-40c90fdda873.png" width="150" hieght="200"/>
 </p>     
 	
 
@@ -31,6 +33,11 @@ Shows images posted on IEEE.org\'s Facebook page. The gallery items are shown in
 ###3.  IEEE ID
 
 Acts as a substitute for payment slips. Instead of carrying worn out slips which can easily be misplaced, IEEE members can log in with their registered mobile number, and present the generated ID at events. Users not registered with IEEE can send an email to ieeensit2016@gmail.com.
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/19619541/22775701/d049ede4-eed2-11e6-9fc5-1b015880e54e.png" width="150" hieght="200"/>
+<img src="https://cloud.githubusercontent.com/assets/19619541/22775698/cf6d5334-eed2-11e6-91cb-66fe411d3288.png" width="150" hieght="200"/>
+</p>
+
 
 
 ###4. Register User
@@ -38,7 +45,10 @@ To register the user in our database with a unique Email id and phone number.
 ###5. Push Notification
   Support for push notifications has been added. When a user installs the app for the first time and register, the device token which is uploaded to our database.
 
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/19619541/22775703/d1c03e26-eed2-11e6-9a94-4b3f23aed4a7.png" width="150" hieght="200"/>
 
+</p>
 	
 ###6. Floating Button 
      Provides three options to the user:
